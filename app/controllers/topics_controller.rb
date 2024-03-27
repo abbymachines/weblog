@@ -1,16 +1,23 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: %i[ show update destroy ]
 
+  def test
+    puts 'this is a test'
+  end
+
   # GET /topics
   # GET /topics.json
   def index
-    # @topics = Topic.all
-    render json: Topic.all
+    @topics = Topic.all
+    render json: @topics
   end
 
   # GET /topics/1
   # GET /topics/1.json
   def show
+    # binding.pry
+    # @topic = Topic.find(topic_params[:id])
+    # render json: @topic
   end
 
   # POST /topics
