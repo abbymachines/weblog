@@ -1,15 +1,29 @@
 class CommentsController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def index
     @comments = Comment.all
     render json: @comments
   end
 
+  def new
+    @comment = Comment.new
+  end
+
   def create
-    @article = Article.find(params[:article_id])
-    @topic = Topic.find(1)
-    @comment = @article.comments.create(comment_params)
-    redirect_to article_path(@article)
+    # @article = Article.find(comment_params[:article_id])
+    # @topic = Topic.find(comment_params[:topics_id])
+
+    @comment = Comment.create(comment_params)
+
+    if @comment.save
+      render json: @comment
+    else
+      # render json: 'oops!'
+      render json: @comment
+    end
+
+    # render json: @comment
   end
 
   def destroy
@@ -26,6 +40,6 @@ class CommentsController < ApplicationController
 
   private
     def comment_params
-      params.require(:comment).permit(:commenter, :body, :status, :topic_id, :article_id)
+      params.require(:comment).permit(:commenter, :body, :status, :topics_id, :article_id)
     end
 end
