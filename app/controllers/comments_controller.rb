@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
     # @article = Article.find(comment_params[:article_id])
     # @topic = Topic.find(comment_params[:topics_id])
 
-    @comment = Comment.create(comment_params)
+    @comment = Comment.create!(comment_params)
 
     if @comment.save
       render json: @comment
@@ -40,6 +40,6 @@ class CommentsController < ApplicationController
 
   private
     def comment_params
-      params.require(:comment).permit(:commenter, :body, :status, :topics_id, :article_id)
+      params.require(:comment).permit(:commenter, :body, :status, :topic_id, :article_id)
     end
 end
