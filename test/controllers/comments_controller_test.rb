@@ -8,4 +8,10 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   #   assert_response :created
   # end
+
+  test "should not save comment without params" do
+    comment = Comment.new
+    assert_not comment.save
+  end
+
 end
