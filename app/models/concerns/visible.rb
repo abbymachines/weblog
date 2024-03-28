@@ -3,6 +3,8 @@ module Visible
 
   VALID_STATUSES = ['public', 'private', 'archived']
 
+  # VALID_TOPICS = Topic.all
+
   included do
     validates :status, inclusion: { in: VALID_STATUSES }
   end

@@ -17,7 +17,7 @@ class TopicsController < ApplicationController
   def show
     # binding.pry
     # @topic = Topic.find(topic_params[:id])
-    # render json: @topic
+    render json: @topic
   end
 
   # POST /topics
