@@ -1,6 +1,13 @@
 class CommentsController < ApplicationController
+
+  def index
+    @comments = Comment.all
+    render json: @comments
+  end
+
   def create
     @article = Article.find(params[:article_id])
+    @topic = Topic.find(1)
     @comment = @article.comments.create(comment_params)
     redirect_to article_path(@article)
   end
