@@ -14,13 +14,22 @@ class CommentsController < ApplicationController
     # @article = Article.find(comment_params[:article_id])
     # @topic = Topic.find(comment_params[:topics_id])
 
-    @comment = Comment.create!(comment_params)
+    begin
+      # formatted_comment_params = comment_params.as_json
+      # formatted_comment_params["article_id"] = request.params["article_id"]
 
-    if @comment.save
+      @article_id = request.params["article_id"]
+
+      @comment = Comment.new(comment_params)
+      binding.pry
+      @comment.article_id = @article_id
+      @comment.save
+      # binding.pry
       render json: @comment
-    else
-      # render json: 'oops!'
-      render json: @comment
+
+    rescue ActiveRecord::RecordInvalid => e
+      # binding.pry
+      render json: e.to_json
     end
 
     # render json: @comment
