@@ -2,6 +2,8 @@ source "https://rubygems.org"
 
 ruby "3.0.0"
 
+gem 'rspec', '~> 3.0'
+
 gem "pry"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
