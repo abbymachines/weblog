@@ -13,4 +13,11 @@ RSpec.describe 'Comment', type: :request do
       expect(response).to have_http_status(400)
     end
   end
+
+  context 'created without topic_id' do
+    it 'does not generate primary key' do
+      comment = Comment.create(article_id: 1, 'commenter': 'Aristotle', body: 'i only dont know that which i know i do or dont. or no. wait')
+      expect(comment.topic_id).to match(nil)
+    end
+  end
 end
