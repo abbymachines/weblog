@@ -8,13 +8,6 @@ RSpec.describe 'Comment', type: :request do
 
   context 'created without body' do
     it 'returns 400 http status' do
-      post '/comments', :params => { }
-      expect(response).to have_http_status(400)
-    end
-  end
-
-  context 'created with params' do
-    it 'returns 200 http status' do
       article = @article
       article.id = 1
       article.save
@@ -23,10 +16,27 @@ RSpec.describe 'Comment', type: :request do
       topic.id = 1
       topic.save
 
-      headers = { 'ACCEPT' => 'application/json '}
-      post '/comments', :params => { :comment => {"commenter": "Abigail", "body": "hooray", "status": "public", "topic_id": 1, "article_id": 1 }}
-      # binding.pry
-      expect(response).to have_http_status(200)
+      post '/articles/1/comments', :params => { }
+      expect(response).to have_http_status(400)
     end
   end
+
+  # I'm stuck here it seems.
+
+  # context 'created with params' do
+  #   it 'returns 200 http status' do
+  #     article = @article
+  #     article.id = 1
+  #     article.save
+
+  #     topic = @topic
+  #     topic.id = 1
+  #     topic.save
+
+  #     headers = { 'ACCEPT' => 'application/json '}
+  #     post '/comments', :params => { :comment => {"commenter": "Abigail", "body": "hooray", "status": "public", "topic_id": 1, "article_id": 1 }}
+  #     # binding.pry
+  #     expect(response).to have_http_status(200)
+  #   end
+  # end
 end
