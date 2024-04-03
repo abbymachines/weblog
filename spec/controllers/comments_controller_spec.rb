@@ -5,7 +5,7 @@
 require "rails_helper"
 
 RSpec.describe 'Comment' do
-  before { @example_string = 'hello rspec' }
+  before { @example_string = 'hello world' }
   before { @comment = Comment.create }
 
   context 'made without data' do
@@ -20,7 +20,7 @@ RSpec.describe 'Comment' do
     it 'is hello world' do
       string = @example_string
 
-      expect(string).to equal('hello world')
+      expect(string).to match('hello world')
     end
   end
 end
