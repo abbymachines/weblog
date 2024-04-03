@@ -2,12 +2,17 @@
 
 # also: practice mocking
 
+require "rails_helper"
+
 RSpec.describe 'Comment' do
   before { @example_string = 'hello rspec' }
+  before { @comment = Comment.create }
 
   context 'made without data' do
     it 'has nil topic' do
-      expect(incomplete_comment.topic_id).to equal(nil)
+      comment = @comment
+
+      expect(comment.topic_id).to equal(1)
     end
   end
 
