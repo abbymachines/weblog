@@ -17,7 +17,7 @@ RSpec.describe 'Comment' do
   end
 
   context 'but actually example string' do
-    it 'matches example string' do
+    it 'is hello world' do
       string = @example_string
 
       expect(string).to equal('hello world')
