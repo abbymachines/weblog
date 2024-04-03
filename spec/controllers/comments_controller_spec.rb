@@ -12,7 +12,7 @@ RSpec.describe 'Comment' do
     it 'has nil topic' do
       comment = @comment
 
-      expect(comment.topic_id).to equal(1)
+      expect(comment.topic_id).to equal(nil)
     end
   end
 
