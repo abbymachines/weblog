@@ -1,26 +1,13 @@
 # in the 'arrange/act' just hit the endpoint (i.e. youre not seeding the data into the test database for this particular test first; youre passing it through the API call)
 
-# also: practice mocking
-
 require "rails_helper"
 
-RSpec.describe 'Comment' do
-  before { @example_string = 'hello world' }
-  before { @comment = Comment.create }
-
-  context 'made without data' do
-    it 'has nil topic' do
-      comment = @comment
-
-      expect(comment.topic_id).to equal(nil)
-    end
-  end
-
-  context 'but actually example string' do
-    it 'is hello world' do
-      string = @example_string
-
-      expect(string).to match('hello world')
+RSpec.describe 'Comment', type: :request do
+  context 'created' do
+    it "without body returns 400 http status" do
+      headers = { 'ACCEPT' => 'application/json' }
+      post '/comments', :params => { }
+      expect(response).to have_http_status(400)
     end
   end
 end
