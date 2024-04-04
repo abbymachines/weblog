@@ -13,14 +13,17 @@ class CommentsController < ApplicationController
   def create
 
     begin
+      # binding.pry
       comment_params
       @article_id = request.params["article_id"]
 
       create_comment()
       comment = @comment
-      render json: comment_params.to_json
+      # binding.pry
+      render json: comment_params.to_json, status: :created
 
     rescue ActiveRecord::RecordInvalid => e
+      # binding.pry
       render json: e.to_json, status: :bad_request
     end # test this line
     # need to mock this code to ensure it correctly handles the error
@@ -51,6 +54,6 @@ class CommentsController < ApplicationController
 
   private
     def comment_params
-      params.require(:comment).permit(:commenter, :body, :status, :topic_id, :article_id)
+      params.permit(:commenter, :body, :status, :topic_id, :article_id)
     end
 end

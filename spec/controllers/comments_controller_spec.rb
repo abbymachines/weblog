@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe 'Comment', type: :request do
-  before { @article = Article.new(title: 'all about lorems', body: 'ipsums and such. even a dolor sit amet', status: 'public') }
+  before { @article = Article.create(title: 'all about lorems', body: 'ipsums and such. even a dolor sit amet', status: 'public') }
   before {
     @topic = Topic.create(topic_name: 'celebrations')
   }
@@ -13,8 +13,8 @@ RSpec.describe 'Comment', type: :request do
     it 'returns 201 http status' do
       # @topic.id = 1
       # binding.pry
-      post '/articles/1/comments', :params => { "comment" => {
-        "commenter": "sophie", "body": "i get that fizzy feeling. and i want lemonade", "topic_id": 1, "status": "public" }}
+      post '/articles/980190963/comments', :params => {
+        "commenter": "sophie", "body": "i get that fizzy feeling. and i want lemonade", "topic_id": 980190963, "status": "public" }
       expect(response).to have_http_status(201)
     end
   end
