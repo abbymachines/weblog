@@ -12,8 +12,8 @@ RSpec.describe 'Comment', type: :request do
   context 'created with correct params' do
     it 'returns 201 http status' do
       @topic.id = 1
-      post '/articles/1/comments', :params => { 'commenter': 'sophie', body: 'i get that fizzy feeling. and i want lemonade', topic_id: 1 }
-      expect(response).to have_http_status(200)
+      post '/articles/1/comments', :params => { 'commenter': 'sophie', 'body': 'i get that fizzy feeling. and i want lemonade', 'topic_id': 1 }
+      expect(response).to have_http_status(201)
     end
   end
 
