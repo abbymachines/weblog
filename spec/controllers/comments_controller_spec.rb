@@ -9,7 +9,7 @@ RSpec.describe 'Comment', type: :request do
   }
 
   # the success case should expect a 201 response
-  context 'created with correct params' do
+  context 'created with valid params' do
     it 'returns 201 http status' do
       # @topic.id = 1
       # binding.pry
