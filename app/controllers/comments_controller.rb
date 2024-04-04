@@ -18,10 +18,10 @@ class CommentsController < ApplicationController
 
       create_comment()
       comment = @comment
-      render json: comment
+      render json: comment_params.to_json
 
     rescue ActiveRecord::RecordInvalid => e
-      render json: e.to_json
+      render json: e.to_json, status: :bad_request
     end # test this line
     # need to mock this code to ensure it correctly handles the error
     # "sad path" is testing that the error is raised/handled
