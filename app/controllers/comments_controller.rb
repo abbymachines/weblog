@@ -11,23 +11,16 @@ class CommentsController < ApplicationController
   end
 
   def create
-    # @article = Article.find(comment_params[:article_id])
-    # @topic = Topic.find(comment_params[:topics_id])
 
     begin
-      # formatted_comment_params = comment_params.as_json
-      # formatted_comment_params["article_id"] = request.params["article_id"]
-
+      comment_params
       @article_id = request.params["article_id"]
 
-      # @comment = Comment.new(comment_params)
-      # binding.pry
-      # @comment.article_id = @article_id
-      # @comment.save
-      render json: @comment
+      create_comment()
+      comment = @comment
+      render json: comment
 
     rescue ActiveRecord::RecordInvalid => e
-      # binding.pry
       render json: e.to_json
     end # test this line
     # need to mock this code to ensure it correctly handles the error
@@ -40,9 +33,8 @@ class CommentsController < ApplicationController
     # mock this method in the tests to raise a somewhat expected error
     # you want an error that's not caught by line 29; it should be an error not handled by the existing error handling
     @comment = Comment.new(comment_params)
-    binding.pry
     @comment.article_id = @article_id
-    @comment.save
+    @comment.save!
   end
 
   def destroy

@@ -14,11 +14,11 @@ class TopicsController < ApplicationController
 
   # GET /topics/1
   # GET /topics/1.json
-  # def show
-  #   # binding.pry
-  #   # @topic = Topic.find(topic_params[:id])
-  #   render json: @topic
-  # end
+  def show
+    # binding.pry
+    # @topic = Topic.find(topic_params[:id])
+    render json: @topic
+  end
 
   # POST /topics
   # POST /topics.json
