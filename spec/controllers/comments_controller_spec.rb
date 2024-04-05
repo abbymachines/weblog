@@ -13,15 +13,16 @@ RSpec.describe 'Comment', type: :request do
     it 'returns 201 http status' do
       # @topic.id = 1
       # binding.pry
-      post '/articles/980190963/comments', :params => {
-        "commenter": "sophie", "body": "i get that fizzy feeling. and i want lemonade", "topic_id": 980190963, "status": "public" }
+      article_id = @article.id
+      post "/articles/#{@article.id}/comments", :params => {
+        "commenter": "sophie", "body": "i get that fizzy feeling. and i want lemonade", "topic_id": @topic.id, "status": "public" }
       expect(response).to have_http_status(201)
     end
   end
 
   context 'created without body' do
     it 'returns 400 http status' do
-      post '/articles/1/comments', :params => { }
+      post '/articles/980190963/comments', :params => { }
       # binding.pry
       expect(response).to have_http_status(400)
     end
