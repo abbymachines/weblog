@@ -57,3 +57,5 @@ class CommentsController < ApplicationController
       params.permit(:commenter, :body, :status, :topic_id, :article_id)
     end
 end
+
+# this is just an arbitrary sentecne so i can make a pull request
