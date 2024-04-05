@@ -11,9 +11,6 @@ RSpec.describe 'Comment', type: :request do
   # the success case should expect a 201 response
   context 'created with valid params' do
     it 'returns 201 http status' do
-      # @topic.id = 1
-      # binding.pry
-      article_id = @article.id
       post "/articles/#{@article.id}/comments", :params => {
         "commenter": "sophie", "body": "i get that fizzy feeling. and i want lemonade", "topic_id": @topic.id, "status": "public" }
       expect(response).to have_http_status(201)
