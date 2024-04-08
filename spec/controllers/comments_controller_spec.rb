@@ -7,15 +7,20 @@ RSpec.describe 'Comment', type: :request do
   before {
     @topic = Topic.create(topic_name: 'celebrations')
   }
+  # 'let!' is the same as the before statements above
+  # 'let' (without the !) lazy loads (which involves memoization)
 
   # the success case should expect a 201 response
   context 'created with valid params' do
     it 'returns 201 http status' do
+      # expect article to have 0 comments
       post "/articles/#{@article.id}/comments", :params => {
         "commenter": "sophie", "body": "i get that fizzy feeling. and i want lemonade", "topic_id": @topic.id, "status": "public" }
+      # expect article to have a count of 1 comments
       expect(response).to have_http_status(201)
     end
 
+    # this test case can be folded into the above test
     it 'saves to the database' do
       expect{post "/articles/#{@article.id}/comments", :params => {
         "commenter": "sophie", "body": "i get that fizzy feeling. and i want lemonade", "topic_id": @topic.id, "status": "public" }
