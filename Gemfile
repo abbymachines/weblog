@@ -2,7 +2,9 @@ source "https://rubygems.org"
 
 ruby "3.0.0"
 
-gem "factory_bot_rails"
+group :development, :test do
+  gem "factory_bot_rails"
+end
 
 # gem 'rspec', '~> 3.0'
 
