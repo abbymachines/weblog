@@ -15,11 +15,17 @@ RSpec.describe 'Comment', type: :request do
         "commenter": "sophie", "body": "i get that fizzy feeling. and i want lemonade", "topic_id": @topic.id, "status": "public" }
       expect(response).to have_http_status(201)
     end
+
+    it 'saves to the database' do
+      expect{post "/articles/#{@article.id}/comments", :params => {
+        "commenter": "sophie", "body": "i get that fizzy feeling. and i want lemonade", "topic_id": @topic.id, "status": "public" }
+    }.to change { Comment.count }
+    end
   end
 
   context 'created without body' do
     it 'returns 400 http status' do
-      post '/articles/980190963/comments', :params => { }
+      post "/articles/#{@article.id}/comments", :params => { }
       # binding.pry
       expect(response).to have_http_status(400)
     end
