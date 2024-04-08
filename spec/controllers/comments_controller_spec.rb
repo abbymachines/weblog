@@ -1,6 +1,9 @@
 # in the 'arrange/act' just hit the endpoint (i.e. youre not seeding the data into the test database for this particular test first; youre passing it through the API call)
 
 require "rails_helper"
+# require "factory_bot"
+
+# binding.pry
 
 RSpec.describe 'Comment', type: :request do
   before { @article = Article.create(title: 'all about lorems', body: 'ipsums and such. even a dolor sit amet', status: 'public') }

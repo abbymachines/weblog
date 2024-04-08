@@ -1,8 +1,5 @@
 FactoryBot.define do
-
-  factory :example_user do
-    username "Joe"
-    email "joe@gmail.com"
-    password "blah"
+  factory :topic do
+    topic_name { "conversation starter" }
   end
 end
