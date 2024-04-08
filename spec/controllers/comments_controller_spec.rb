@@ -5,6 +5,10 @@ require "rails_helper"
 
 # binding.pry
 
+# binding.pry
+# test_comment = create(:comment)
+
+
 RSpec.describe 'Comment', type: :request do
   before { @article = Article.create(title: 'all about lorems', body: 'ipsums and such. even a dolor sit amet', status: 'public') }
   before {
