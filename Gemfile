@@ -2,6 +2,8 @@ source "https://rubygems.org"
 
 ruby "3.0.0"
 
+gem "factory_bot_rails"
+
 # gem 'rspec', '~> 3.0'
 
 gem "pry"
